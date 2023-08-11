@@ -1,4 +1,4 @@
-## About the 0x00_hello_world Repo ##
+## About the 0x00_hello_world Directory ##
 
-This is the first project in the line of C programming on Alx.
-The tasks in this project are as follows:
+This is the first project of the C Programming course. The files
+required for the fulfilment of this project are as follows:
