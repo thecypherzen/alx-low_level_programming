@@ -12,7 +12,7 @@
  */
 void printlast(int n, int rem, char *msg)
 {
-	printf("The last digit of %d is %d and is %s.\n", n, rem, msg);
+	printf("Last digit of %d is %d and is %s\n", n, rem, msg);
 }
 
 
