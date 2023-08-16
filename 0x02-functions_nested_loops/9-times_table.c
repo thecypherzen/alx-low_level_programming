@@ -13,37 +13,43 @@ void times_table(void)
 	row = 0;
 	col = 0;
 
-	while (col <= 9)
+	while (row <= 9)
 	{
-		while (row <= 9)
+		while (col <= 9)
 		{
 			int mult;
+			int nextm;
+			int cur;
 
 			mult = row * col;
+			cur = col;
+			nextm = row * (cur + 1);
+
 			if (mult < 10)
 			{
 				_putchar('0' + mult);
-				if (row != 9)
+				if (col != 9 )
 				{
 					_putchar(',');
 					_putchar(32); /* space */
-					_putchar(32);
+					if (nextm < 10)
+						_putchar(32);
 				}
 			}
 			else
 			{
 				_putchar('0' + (mult / 10));
 				_putchar('0' + (mult % 10));
-				if (row != 9)
+				if (col != 9)
 				{
 					_putchar(',');
 					_putchar(32);
 				}
 			}
-			row++;
+			col++;
 		}
 		_putchar('\n');
-		col++;
-		row = 0;
+		row++;
+		col = 0;
 	}
 }
