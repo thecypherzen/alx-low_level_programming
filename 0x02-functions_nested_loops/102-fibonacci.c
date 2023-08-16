@@ -8,16 +8,16 @@
  */
 void getfib(int terms)
 {
-	int start;
-	int next;
-	int temp;
+	long int start;
+	long int next;
+	long int temp;
 	int count;
 
 	start = 1;
 	temp = 2;
 	count = 3;
 
-	printf("%d, %d, ", start, temp);
+	printf("%ld, %ld, ", start, temp);
 
 	while (count <= terms)
 	{
@@ -25,9 +25,9 @@ void getfib(int terms)
 		start = temp;
 		temp = next;
 		if (count != terms)
-			printf("%d, ", next);
+			printf("%ld, ", next);
 		else
-			printf("%d\n", next);
+			printf("%ld\n", next);
 		count++;
 	}
 }
