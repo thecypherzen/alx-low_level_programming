@@ -21,7 +21,7 @@ int main(void)
 
 	while (next <= 4000000)
 	{
-		if (cur_term % 2 == 0)
+		if (next % 2 == 0)
 			sum += next;
 		temp = start + next;
 		start = next;
