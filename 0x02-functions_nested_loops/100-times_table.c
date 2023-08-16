@@ -24,7 +24,7 @@ void punct(int num, int row, int col)
 			_putchar(32);
 			_putchar(32);
 		}
-		else if(nextm >= 10 && nextm < 100)
+		else if (nextm >= 10 && nextm < 100)
 			_putchar(32);
 	}
 }
