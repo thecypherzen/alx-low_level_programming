@@ -1,26 +1,33 @@
 #include "main.h"
 /**
- * print_nums - a function tha tprints numbers 0 - 14 once.
- * - uses the _putchar three times only.
+ * sendchar - sends an int value to stdout
  * Return: void
  */
-void print_nums(void)
+void sendchar(int n)
 {
-	int i, int fst, int lst; /* fst = first digit, lst = last digit */
+	_putchar(n);
+}
+
+/**
+ * print-14 - prints numbers from 0 - 14.
+ * Return: void
+ */
+void print_14(void)
+{
+	int i; int fd; int ld;
 
 	i = 0;
 	while (i <= 14)
 	{
-		fst = i / 10;
-		lst = i % 10;
-
-		if (i < 10)
-			_putchar('0' + i);
-		else
+		fd = i / 10;
+		ld = i % 10;
+		if (fd > 0)
 		{
-			_putchar('0' + (i / 10));
-			_putchar('0' + (i % 10));
+			sendchar('0' + fd);
+			sendchar('0' + ld);
 		}
+		else
+			sendchar('0' + ld);
 		i++;
 	}
 }
@@ -38,7 +45,7 @@ void more_numbers(void)
 
 	while (count < 10)
 	{
-		print_nums();
+		print_14();
 		_putchar('\n');
 		count++;
 	}
