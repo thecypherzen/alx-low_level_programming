@@ -44,7 +44,7 @@ void more_numbers(void)
 
 	count = 1;
 
-	while (count < 10)
+	while (count <= 10)
 	{
 		print_14();
 		_putchar('\n');
