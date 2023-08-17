@@ -1,6 +1,7 @@
 #include "main.h"
 /**
  * sendchar - sends an int value to stdout
+ * @n: the int number to print it's ascii value
  * Return: void
  */
 void sendchar(int n)
@@ -9,12 +10,12 @@ void sendchar(int n)
 }
 
 /**
- * print-14 - prints numbers from 0 - 14.
+ * print_14 - prints numbers from 0 - 14.
  * Return: void
  */
 void print_14(void)
 {
-	int i; int fd; int ld;
+	int i, fd, ld;
 
 	i = 0;
 	while (i <= 14)
@@ -32,7 +33,7 @@ void print_14(void)
 	}
 }
 /**
- * print_most_numbers - a function that prints 10 times the numbers,
+ * more_numbers - a function that prints 10 times the numbers,
  * from 0 to 14, followed by a new line.
  * - only use _putchar three times.
  * Return: void
