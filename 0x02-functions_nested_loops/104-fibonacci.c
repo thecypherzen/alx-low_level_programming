@@ -1,47 +1,50 @@
 #include <stdio.h>
 
 /**
- * getfib - generates and prints first n fibonacci numbers.
- * @terms: number of terms to generate.
+ * main - Prints the first 98 Fibonacci numbers
  *
- * Return: void
- */
-void getfib(int terms)
-{
-	long int start;
-	long int next;
-	long int temp;
-	int count;
-
-	start = 1;
-	temp = 2;
-	count = 3;
-
-	printf("%lu, %lu, ", start, temp);
-
-	while (count <= terms)
-	{
-		next = start + temp;
-		start = temp;
-		temp = next;
-		if (count != terms)
-			printf("%lu, ", next);
-		else
-			printf("%lu\n", next);
-		count++;
-	}
-}
-/**
- * main - prints first n fibonacci numbers
- *
- * Return: 0 always
+ * Return: Always 0.
  */
 int main(void)
 {
-	int fib_terms;
+	int c, bool, bool2;
+	long int n1, n2, fn, fn2, n11, n22;
 
-	fib_terms = 98;
-
-	getfib(fib_terms);
+	n1 = 1;
+	n2 = 2;
+	bool =  bool2 = 1;
+	printf("%ld, %ld", n1, n2);
+	for (c = 0; c < 96; c++)
+	{
+		if (bool)
+		{
+			fn = n1 + n2;
+			printf(", %ld", fn);
+			n1 = n2;
+			n2 = fn;
+		}
+		else
+		{
+			if (bool2)
+			{
+				n11 = n1 % 1000000000;
+				n22 = n2 % 1000000000;
+				n1 = n1 / 1000000000;
+				n2 = n2 / 1000000000;
+				bool2 = 0;
+			}
+			fn2 = (n11 + n22);
+			fn = n1 + n2 + (fn2 / 1000000000);
+			printf(", %ld", fn);
+			printf("%ld", fn2 % 1000000000);
+			n1 = n2;
+			n11 = n22;
+			n2 = fn;
+			n22 = (fn2 % 1000000000);
+		}
+		if (((n1 + n2) < 0) && bool == 1)
+			bool = 0;
+	}
+	printf("\n");
 	return (0);
 }
