@@ -1,50 +1,17 @@
 #include "main.h"
 
 /**
- * print_u - prints int in units ---- 1
- * @x: the integer to print
+ * printchar - prints a character to sdout
+ * @x: the integer ascii value of the character
  * Return: void
  */
-void print_u(int x)
+void printchar(int x)
 {
 	_putchar('0' + x);
 }
 
 /**
- * print_ts - prints int in 10s ---- 2
- * @y: the integer to print
- * Return: void
- */
-void print_ts(int y)
-{
-	print_u(y / 10);
-	print_u(y % 10);
-}
-
-/**
- * print_h - prints a number in hundreds --- 3
- * @a: the number to print
- * Return: void
- */
-void print_h(int a)
-{
-	print_u(a / 100);
-	print_ts(a % 100);
-}
-
-/**
- * print_th - prints a number in thousands --- 4
- * @n: the number ot print
- * Return: void
- */
-void print_th(int n)
-{
-	print_ts(n / 100);
-	print_ts(n % 100);
-}
-
-/**
- * print_number - prints an integer  --- 5
+ * print_number - prints an integer  --------------> 5
  * - can only use the _putchar function
  * - cannot use long
  * - arrays, pointers not allowed
@@ -54,17 +21,43 @@ void print_th(int n)
  */
 void print_number(int n)
 {
+	int fd, div, ld, neg;
+
 	if (n < 0)
 	{
+		neg = (n * (-1));
 		_putchar('-');
-		print_number(n * (-1));
+		print_number(neg);
 	}
-	if (n >= 0 && n < 10)
-		print_u(n);
-	if (n >= 10 && n < 100)
-		print_ts(n);
-	if (n >= 100 && n < 1000)
-		print_h(n);
-	if (n >= 1000 && n < 10000)
-		print_th(n);
+	else if (n == 0)
+		_putchar('0');
+	else
+	{
+		div = 10;
+		fd = n / div; /* first digit */
+		ld = n % div; /* last digit */
+
+		if (fd == 0 && ld <= 9)
+			printchar(ld);
+		else if (fd <= 9 && ld <= 9)
+		{
+			printchar(fd);
+			printchar(ld);
+		}
+		else
+		{
+			while (fd > 9)
+			{
+				div *= 10;
+				fd = n / div;
+			}
+			while (div > 1)
+			{
+				printchar(fd);
+				fd = (n % div) / (div / 10);
+				div /= 10;
+			}
+			printchar(fd);
+		}
+	}
 }
