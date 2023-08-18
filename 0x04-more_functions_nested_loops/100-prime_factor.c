@@ -7,11 +7,12 @@
  */
 int main(void)
 {
-	long int num, count;
+	long int num, count, sqr;
 
 	num = 612852475143;
+	sqr = sqrt(num);
 
-	for (count = 3; count != num; count += 2)
+	for (count = 3; count <= sqr; count += 2)
 	{
 		while (!(num % count))
 			num /= count;
