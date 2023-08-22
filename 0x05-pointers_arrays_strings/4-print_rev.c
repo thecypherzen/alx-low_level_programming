@@ -25,10 +25,10 @@ int _str_len(char *str)
  */
 void print_rev(char *s)
 {
-	int i, strlen;
+	int i, last_index;
 
-	strlen = _str_len(s); /* get string length */
-	for (i = strlen; i >= 0; i--)
+	last_index = _str_len(s) - 1; /* get string length */
+	for (i = last_index; i >= 0; i--)
 		_putchar(*(s + i));
 
 	_putchar(10);
