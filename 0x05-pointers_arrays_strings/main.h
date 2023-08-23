@@ -18,7 +18,8 @@ void print_array(int *a, int n);
 char *_strcpy(char *dest, char *src);
 char *_memset(char *s, char b, unsigned int n);
 int _atoi(char *s);
-int _getifd(char *s);
-int _ifneg(char *s);
+unsigned int _getifd(char *s);
+unsigned int _ifneg(char *s);
 char *_getdigits(char *str);
+unsigned int _str_len(char *s);
 #endif /* POINTERS_H */

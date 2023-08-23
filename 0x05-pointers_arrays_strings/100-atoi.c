@@ -8,17 +8,17 @@
  */
 int _atoi(char *s)
 {
-	int if_neg, i, int_val;
+	unsigned int if_neg, i, int_val;
 	char *nums, curr;
 
 	nums = _getdigits(s);
-	if (_strlen(nums) == 0)
+	if (_str_len(nums) == 0)
 		return (0);
 
-	if_neg = _ifneg(s);
+	if_neg = (_ifneg(s));
 	int_val = 0;
 
-	for (i = 0; i < _strlen(nums); i++)
+	for (i = 0; i < _str_len(nums); i++)
 	{
 		curr = *(nums + i);
 		int_val = (int_val * 10) + (curr - 48);
@@ -36,9 +36,9 @@ int _atoi(char *s)
  * @s: the string
  * Return: if negative (1) or (0)
  */
-int _ifneg(char *s)
+unsigned int _ifneg(char *s)
 {
-	int i, if_neg, negs, ifn;
+	unsigned int i, if_neg, negs, ifn;
 
 	ifn = _getifd(s);
 	negs = 0;
@@ -59,13 +59,13 @@ int _ifneg(char *s)
  * @str: the string
  * Return: the index
  */
-int _getifd(char *str)
+unsigned int _getifd(char *str)
 {
-	int i, ifd;
+	unsigned int i, ifd;
 	char curr;
 
 	ifd = -1;
-	for (i = 0; i < _strlen(str); i++)
+	for (i = 0; i < _str_len(str); i++)
 	{
 		curr = *(str + i);
 		if (curr >= 48 && curr <= 57)
@@ -88,7 +88,7 @@ char *_getdigits(char *str)
 	int len, i, j;
 	char curr, next, *digits;
 
-	len = _strlen(str);
+	len = _str_len(str);
 	digits = malloc(len);
 	j = 0;
 
@@ -110,13 +110,13 @@ char *_getdigits(char *str)
 
 
 /**
- * _strlen - returns the length of a string
+ * _str_len - returns the length of a string
  * @s: pointer to string
  * Return: length of string
  */
-int _strlen(char *s)
+unsigned int _str_len(char *s)
 {
-	int len;
+	unsigned int len;
 
 	len = 0;
 
