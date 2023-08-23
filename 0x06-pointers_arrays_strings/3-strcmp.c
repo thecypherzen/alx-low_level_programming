@@ -1,6 +1,4 @@
 #include "main.h"
-#include <stdlib.h>
-#include <time.h>
 
 /**
  * _strcmp - compares two strings.
@@ -14,9 +12,8 @@ int _strcmp(char *s1, char *s2)
 {
 	int ran, i;
 
-	srand(time(NULL));
-	ran = (rand() % 11) + 10;
 	i = 0;
+	ran = 15;
 
 	while (*(s1 + i) != '\0' && *(s2 + i) != '\0')
 	{
