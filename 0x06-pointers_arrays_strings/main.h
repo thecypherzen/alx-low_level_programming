@@ -15,6 +15,5 @@ char *string_toupper(char *);
 char *cap_string(char *);
 char *leet(char *);
 int cspl(char c);
-int _index_of(char c);
 
 #endif /* PTRS_ARRS_STRS_H */
