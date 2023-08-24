@@ -7,8 +7,8 @@
  */
 char *rot13(char *str)
 {
-	char *alpha = "abcdefghijklmnopqrstuvwxyz";
-	char *rot13 = "nopqrstuvwxyzabcdefghijklm";
+	char *alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	char *rot13 = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
 	char curr, jurr;
 	int i, j;
 
@@ -21,11 +21,6 @@ char *rot13(char *str)
 			if (curr == jurr)
 			{
 				*(str + i) = *(rot13 + j);
-				break;
-			}
-			else if (curr == (jurr - 32))
-			{
-				*(str + i) = *(rot13 + j) - 32;
 				break;
 			}
 		}
