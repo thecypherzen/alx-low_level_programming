@@ -10,23 +10,26 @@
  */
 int _strcmp(char *s1, char *s2)
 {
-	int ran, i;
+	int i;
+	char curr1, curr2;
 
 	i = 0;
-	ran = 15;
 
 	while (*(s1 + i) != '\0' && *(s2 + i) != '\0')
 	{
-		if (*(s1 + i) > *(s2 + i))
-			return (ran);
-		else if (*(s1 + i) < *(s2 + i))
-			return (ran * (-1));
+		curr1 = *(s1 + i);
+		curr2 = *(s2 + i);
+		if (curr1 > curr2 || curr1 < curr2)
+			return (curr1 - curr2);
 		i++;
 	}
 
-	if (*(s1 + i) == '\0' && *(s2 + i) != '\0')
-		return (ran * (-1));
-	else if (*(s1 + i) != '\0' && *(s2 + i) == '\0')
-		return (ran);
+	curr1 = *(s1 + i);
+	curr2 = *(s2 + i);
+
+	if (curr1 == '\0' && curr2 != '\0')
+		return (0 - curr2);
+	else if (curr1 != '\0' && curr2 == '\0')
+		return (curr1);
 	return (0);
 }
