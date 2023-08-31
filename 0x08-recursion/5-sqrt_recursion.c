@@ -11,7 +11,7 @@ int _sqrt_recursion(int n)
 		return (0);
 	if (n == 1)
 		return (1);
-	if (n < 0 || !(_is_perfect_sqr((unsigned int)n)))
+	if (n < 0 || !(_is_perfect_sqr((unsigned long)n)))
 		return (-1);
 	return (_cal_sqrt(n, n / 2));
 }
@@ -36,9 +36,9 @@ int _cal_sqrt(int num, int approx)
  * @n: the number
  * Return: 1 if perfect squre, 0 otherwise
  */
-int _is_perfect_sqr(unsigned int n)
+int _is_perfect_sqr(unsigned long n)
 {
-	unsigned int left, right;
+	unsigned long left, right;
 
 	left = 1, right = n;
 	return (_checkr(n, left, right));
@@ -50,11 +50,11 @@ int _is_perfect_sqr(unsigned int n)
  * @r: the right of range
  * Return: 1 if true, 0 otherwise.
  */
-int _checkr(unsigned int num, unsigned int l, unsigned int r)
+int _checkr(unsigned long num, unsigned long l, unsigned long r)
 {
-	unsigned int mid, midsqrmax;
+	unsigned long mid, midsqrmax;
 
-	midsqrmax = (pow(2, 16) - 1) * pow(2, 16);
+	midsqrmax = (pow(2, 32) - 1) * pow(2, 32);
 	mid = l + ((r - l) / 2);
 
 	if (l > r || mid * mid > midsqrmax)

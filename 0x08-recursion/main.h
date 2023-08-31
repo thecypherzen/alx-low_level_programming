@@ -15,7 +15,7 @@ int _pow_recursion(int x, int y);
 int _sqrt_recursion(int n);
 int is_prime_number(int n);
 int _cal_sqrt(int num, int approx);
-int _checkr(unsigned int num, unsigned int l, unsigned int r);
-int _is_perfect_sqr(unsigned int n);
+int _checkr(unsigned long num, unsigned long l, unsigned long r);
+int _is_perfect_sqr(unsigned long n);
 
 #endif /* MORE_PTRS_H */
