@@ -17,6 +17,6 @@ int is_prime_number(int n);
 int _cal_sqrt(int num, int approx);
 int _checkr(unsigned long num, unsigned long l, unsigned long r);
 int _is_perfect_sqr(unsigned long n);
-int checkprime(unsigned int num, unsigned int count, unsigned int limit);
+int checkprime(int num, int count);
 
 #endif /* MORE_PTRS_H */
