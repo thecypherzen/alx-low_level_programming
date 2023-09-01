@@ -27,7 +27,7 @@ int main(int argsc, char **argsv)
 	{
 		if (curr[idx] < 48 || curr[idx] > 57)
 		{
-			printf("Error\n");
+			/*	printf("Error\n"); */
 			return (1);
 		}
 		idx++;
