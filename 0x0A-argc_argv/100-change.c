@@ -8,7 +8,7 @@
  */
 int main(int argsc, char **argsv)
 {
-	/*int idx; */
+	int idx;
 	char *curr;
 
 	if (argsc != 2)
@@ -22,16 +22,16 @@ int main(int argsc, char **argsv)
 		printf("%d\n", 0);
 		return (0);
 	}
-/*	idx = 0;
+	idx = 0;
 	while (curr[idx] != '\0')
 	{
 		if (curr[idx] < 48 || curr[idx] > 57)
 		{
-				printf("Error\n");
-			return (1);
+			printf("%d\n", 0);
+			return (0);
 		}
 		idx++;
-	} */
+	}
 
 	coins_cal(atoi(curr));
 	return (0);
