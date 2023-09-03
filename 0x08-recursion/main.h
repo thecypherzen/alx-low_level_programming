@@ -18,5 +18,8 @@ int _cal_sqrt(int num, int approx);
 int _checkr(unsigned long num, unsigned long l, unsigned long r);
 int _is_perfect_sqr(unsigned long n);
 int checkprime(int num, int count);
+int is_palindrome(char *s);
+int wildcmp(char *s1, char *s2);
+int palcheck(char *s, int i, int j, int max);
 
 #endif /* MORE_PTRS_H */
