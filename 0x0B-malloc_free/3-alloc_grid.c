@@ -1,6 +1,4 @@
 #include "main.h"
-#include <stdio.h>
-
 /**
  * alloc_grid - creates a two-dimensional array of integers
  * @width: columns of 2d array
@@ -10,7 +8,7 @@
  */
 int **alloc_grid(int width, int height)
 {
-	int **arr, *temp, i, j;
+	int **arr, i, j;
 
 	if (width > 0 && height > 0)
 	{
@@ -19,21 +17,25 @@ int **alloc_grid(int width, int height)
 		{
 			for (i = 0; i < height; i++)
 			{
-				temp = malloc(width * sizeof(int));
-				if (temp != NULL)
+				arr[i] = malloc(width * sizeof(int));
+				if (arr[i] != NULL)
 				{
 					for (j = 0; j < width; j++)
-						temp[i] = 0;
-					arr[i] = temp;
+						arr[i][j] = 0;
 				}
 				else
-					free(temp);
+				{
+					for (j = 0; j < i; j++)
+						free(a[j]);
+					free(arr);
+					return (NULL);
+				}
 			}
 		}
 		else
-			free(arr);
+			return (NULL);
 	}
 	else
-		arr = NULL;
+		return (NULL);
 	return (arr);
 }
