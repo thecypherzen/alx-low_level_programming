@@ -2,3 +2,5 @@
 *~
 *.x
 _putchar.c
+mains.dir
+_memset.c

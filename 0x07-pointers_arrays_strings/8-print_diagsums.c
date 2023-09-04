@@ -16,6 +16,7 @@ void print_diagsums(int *a, int size)
 	/* sum of left diagonal */
 	for (i = 0; i < size * size; i += (size + 1))
 		sum_left += *(a + i);
+	/* sum of right diagonal */
 	for (i = size - 1; i <= size * (size - 1); i += (size - 1))
 		sum_right += *(a + i);
 	printf("%d, %d\n", sum_left, sum_right);

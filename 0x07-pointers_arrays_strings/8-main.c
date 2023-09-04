@@ -1,0 +1,27 @@
+#include "main.h"
+#include <stdio.h>
+
+/**
+ * main - check the code
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    int c3[3][3] = {
+        {0, 1, 5},
+        {10, 11, 12},
+        {1000, 101, 102},
+    };
+    int c5[6][6] = {
+	    {1,  2,  3,  4,  5,  6},
+	    {7,  8,  9,  10, 11, 12},
+	    {13, 14, 15, 16, 17, 18},
+	    {19, 20, 21, 22, 23, 24},
+	    {25, 26, 27, 28, 29, 30},
+	    {33, 32, 33, 34, 36, 36}
+    };
+    print_diagsums((int *)c3, 3);
+    print_diagsums((int *)c5, 6);
+    return (0);
+}

@@ -7,6 +7,5 @@
 #include <string.h>
 
 int _putchar(char);
-void coins_cal(int num);
 
 #endif /* MORE_PTRS_H */
