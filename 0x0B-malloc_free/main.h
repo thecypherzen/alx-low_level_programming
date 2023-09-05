@@ -1,5 +1,5 @@
-#ifndef MORE_PTRS_H
-#define MORE_PTRS_H
+#ifndef MALLOC_F_H
+#define MALLOC_F_H
 
 #include <stdio.h>
 #include <math.h>
@@ -12,5 +12,7 @@ char *_strdup(char *str);
 char *str_concat(char *s1, char *s2);
 int **alloc_grid(int width, int height);
 void free_grid(int **grid, int height);
+char *argstostr(int ac, char **av);
+char **strtow(char *str);
 
-#endif /* MORE_PTRS_H */
+#endif /* MALLOC_F_H */
