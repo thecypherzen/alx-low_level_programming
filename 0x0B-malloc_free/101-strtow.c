@@ -14,36 +14,34 @@ char **strtow(char *str)
 	if (str == NULL || (int)strlen(str) == 0)
 		return (NULL);
 	words = make_arr(str), j = steps = found = 0;
-	if (words != NULL)
+	if (words == NULL)
+		return (NULL);
+	for (; *str != '\0'; str++, steps++)
 	{
-		for (; *str != '\0'; str++, steps++)
+		if (*str != ' ')
 		{
-			if (*str != ' ')
+			wlen = i = 0, found = 1;
+			while (str[i] != ' ')
+				wlen++, i++;
+			words[j] = (char *)malloc(wlen * sizeof(char *));
+			if (words[j] != NULL)
 			{
-				wlen = i = 0, found = 1;
-				while (str[i] != ' ')
-					wlen++, i++;
-				words[j] = (char *)malloc((wlen + 1) *
-							  sizeof(char *));
-				if (words[j] != NULL)
+				for (i = 0; i < wlen; i++)
 				{
-					for (i = 0; i < wlen; i++)
-					{
-						words[j][i] = *str;
-						str++, steps++;
-					}
-					words[j][i] = '\0', j++;
+					words[j][i] = *str,
+					str++, steps++;
 				}
-				else
-					return (_free(words, j));
+				j++;
+
 			}
+			else
+				return (_free(words, j));
 		}
-		str -= steps;
-		if (!found)
-			free(words);
-		return ((!found) ? NULL : words);
 	}
-	return (NULL);
+	str -= steps;
+	if (!found)
+		free(words);
+	return ((!found) ? NULL : words);
 }
 
 /**
