@@ -24,7 +24,7 @@ char **strtow(char *str)
 			wlen = k = 0, found = 1;
 			while (str[k] != ' ' && str[k] != '\0')
 				wlen++, k++;
-			words[j] = (char *)malloc((wlen + 1) * sizeof(char *));
+			words[j] = (char *)malloc(wlen * sizeof(char *));
 			if (words[j] == NULL)
 			{
 				for (k = 0; k < j; k++)
