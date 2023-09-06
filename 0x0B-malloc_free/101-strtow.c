@@ -1,6 +1,5 @@
 #include "main.h"
 
-
 /**
  * strtow - splits a string into words.
  * @str: the string
@@ -8,56 +7,41 @@
  */
 char **strtow(char *str)
 {
-	int i, j, steps, wlen, found;
+	int i, j, k, wlen, found;
 	char **words;
 
 	if (str == NULL || (int)strlen(str) == 0)
 		return (NULL);
-	words = make_arr(str), j = steps = found = 0;
+	words = make_arr(str), j = found = 0;
 	if (words == NULL)
 		return (NULL);
-	for (; *str != '\0'; str++, steps++)
+	while (*str != '\0')
 	{
-		if (*str != ' ')
+		if (*str == ' ')
+			str++, i++;
+		else
 		{
-			wlen = i = 0, found = 1;
-			while (str[i] != ' ')
-				wlen++, i++;
-			words[j] = (char *)malloc(wlen * sizeof(char *));
-			if (words[j] != NULL)
+			wlen = k = 0, found = 1;
+			while (str[k] != ' ' && str[k] != '\0')
+				wlen++, k++;
+			words[j] = (char *)malloc((wlen + 1) * sizeof(char *));
+			if (words[j] == NULL)
 			{
-				for (i = 0; i < wlen; i++)
-				{
-					words[j][i] = *str,
-					str++, steps++;
-				}
-				j++;
-
+				for (k = 0; k < j; k++)
+					free(words[k]);
+				free(words);
+				return (NULL);
 			}
 			else
-				return (_free(words, j));
+			{
+				for (k = 0; k < wlen; k++)
+					words[j][k] = *str, str++, i++;
+				words[j][k] = '\0';
+			}
+			j++;
 		}
 	}
-	str -= steps;
-	if (!found)
-		free(words);
 	return ((!found) ? NULL : words);
-}
-
-/**
- * _free - frees 2d array
- * @arr: the array
- * @max: the max index of arr
- * Return: NULL always
- */
-char **_free(char **arr, int max)
-{
-	int i;
-
-	for (i = 0; i <= max; i++)
-		free(arr[i]);
-	free(arr);
-	return (NULL);
 }
 
 /**
@@ -76,12 +60,14 @@ char **make_arr(char *str)
 	{
 		if (*str != ' ')
 		{
-			while (*str != ' ')
+			while (*str != ' ' && *str != '\0')
 				str++;
 			num++;
 		}
-		str++;
+		else
+			str++;
 	}
+
 	/* create array of size num */
 	words = (char **)malloc((num + 1) * sizeof(char **));
 	if (words != NULL)
