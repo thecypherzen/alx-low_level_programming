@@ -24,7 +24,7 @@ char **strtow(char *str)
 			wlen = k = 0, found = 1;
 			while (str[k] != ' ' && str[k] != '\0')
 				wlen++, k++;
-			words[j] = (char *)malloc(wlen * sizeof(char *));
+			words[j] = (char *)malloc((wlen + 1) * sizeof(char));
 			if (words[j] == NULL)
 			{
 				for (k = 0; k < j; k++)
@@ -41,6 +41,7 @@ char **strtow(char *str)
 			j++;
 		}
 	}
+	str -= i;
 	return ((!found) ? NULL : words);
 }
 
@@ -69,7 +70,7 @@ char **make_arr(char *str)
 	}
 
 	/* create array of size num */
-	words = (char **)malloc((num + 1) * sizeof(char **));
+	words = (char **)malloc((num + 1) * sizeof(char *));
 	if (words != NULL)
 	{
 		words[num] = NULL;
