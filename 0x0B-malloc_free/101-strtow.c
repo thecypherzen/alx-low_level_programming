@@ -8,19 +8,19 @@
  */
 char **strtow(char *str)
 {
-	int i, j, steps, wlen;
+	int i, j, steps, wlen, found;
 	char **words;
 
 	if (str == NULL || (int)strlen(str) == 0)
 		return (NULL);
-	words = make_arr(str), j = steps = 0;
+	words = make_arr(str), j = steps = found = 0;
 	if (words != NULL)
 	{
 		for (; *str != '\0'; str++, steps++)
 		{
 			if (*str != ' ')
 			{
-				wlen = i = 0;
+				wlen = i = 0, found = 1;
 				while (str[i] != ' ')
 					wlen++, i++;
 				words[j] = (char *)malloc((wlen + 1) *
@@ -39,7 +39,9 @@ char **strtow(char *str)
 			}
 		}
 		str -= steps;
-		return (words);
+		if (!found)
+			free(words);
+		return ((!found) ? NULL : words);
 	}
 	return (NULL);
 }
