@@ -14,5 +14,7 @@ int **alloc_grid(int width, int height);
 void free_grid(int **grid, int height);
 char *argstostr(int ac, char **av);
 char **strtow(char *str);
+char ** _free(char **arr, int max);
+char **make_arr(char *str);
 
 #endif /* MALLOC_F_H */
