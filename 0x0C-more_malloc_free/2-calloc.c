@@ -20,7 +20,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 		return (NULL);
 
 	for (i = 0; i < nmemb; i++)
-		*((u_int *)ptr + size) = 0;
+		*((u_int8_t *)ptr + size) = 0;
 
 	return (ptr);
 }
