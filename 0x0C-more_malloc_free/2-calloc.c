@@ -14,14 +14,19 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	void *ptr;
 	unsigned int i;
+	uint8_t *temp;
+
+	if (!nmemb || !size)
+		return (NULL);
 
 	ptr = malloc(nmemb * size);
 
-	if (!ptr || nmemb == 0 || size == 0)
+	if (!ptr)
 		return (NULL);
 
+	temp = (uint8_t *)ptr;
 	for (i = 0; i < nmemb * size; i++)
-		*((uint8_t *)ptr + i) = 0;
+		*(temp + i) = 0;
 
 	return (ptr);
 }
