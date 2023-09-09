@@ -9,15 +9,20 @@
  */
 int main(int argsc, char **argsv)
 {
-	int is_num, len1, len2;
+	int is_num, len1, len2, i;
 	char *res, *num1, *num2;
 
+	i = 0;
 	if (argsc != 3)
 	{
 		printf("Error\n");
 		return (98);
 	}
-
+	if ((**(argsv + 1) == 48 && (int)strlen(*(argsv + 1)) == 1) || (**(argsv + 2) == 48 && (int)strlen(*(argsv + 2)) == 1))
+	{
+		printf("%d\n", 0);
+		return (0);
+	}
 	is_num = num_check(--argsc, ++argsv);
 	if (!is_num)
 	{
@@ -29,7 +34,9 @@ int main(int argsc, char **argsv)
 	num2 = len2 <= len1 ? argsv[1] : argsv[0];
 
 	res = _mult(num1, num2);
-	printf("%s\n", *res == 48 ? (res + 1) : res);
+	while (*(res + i) == 48)
+		i++;
+	printf("%s\n", res + i);
 	free(res);
 	return (0);
 }
