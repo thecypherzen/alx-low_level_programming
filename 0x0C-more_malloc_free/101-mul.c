@@ -18,7 +18,8 @@ int main(int argsc, char **argsv)
 		printf("Error\n");
 		return (98);
 	}
-	if ((**(argsv + 1) == 48 && (int)strlen(*(argsv + 1)) == 1) || (**(argsv + 2) == 48 && (int)strlen(*(argsv + 2)) == 1))
+	if ((**(argsv + 1) == 48 && (int)strlen(*(argsv + 1)) == 1) ||
+	    (**(argsv + 2) == 48 && (int)strlen(*(argsv + 2)) == 1))
 	{
 		printf("%d\n", 0);
 		return (0);
