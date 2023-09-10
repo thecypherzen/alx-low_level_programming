@@ -15,4 +15,6 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 void *_cpy_mem(void *dest, void *src, unsigned int sz);
 int num_check(int count, char **args);
 char *_mult(char *num1, char *num2);
+void print_res(char *msg);
+
 #endif /* MORE_MALLOC_F_H */

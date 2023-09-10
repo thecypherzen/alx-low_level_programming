@@ -9,35 +9,36 @@
  */
 int main(int argsc, char **argsv)
 {
-	int is_num, len1, len2, i;
-	char *res, *num1, *num2;
+	int is_num, i;
+	char *res;
 
 	i = 0;
-	if (argsc != 3)
+	if (argsc != 3) /* check for right num of args */
 	{
-		printf("Error\n");
+		print_res("Error");
 		return (98);
 	}
-	if ((**(argsv + 1) == 48 && (int)strlen(*(argsv + 1)) == 1) ||
-	    (**(argsv + 2) == 48 && (int)strlen(*(argsv + 2)) == 1))
-	{
-		printf("%d\n", 0);
-		return (0);
-	}
-	is_num = num_check(--argsc, ++argsv);
+
+	is_num = num_check(--argsc, ++argsv); /* check for non-digit entries */
 	if (!is_num)
 	{
-		printf("Error\n");
+		print_res("Error");
 		return (98);
 	}
-	len1 = (int)strlen(argsv[0]), len2 = (int)strlen(argsv[1]);
-	num1 = len1 >= len2 ? argsv[0] : argsv[1];
-	num2 = len2 <= len1 ? argsv[1] : argsv[0];
 
-	res = _mult(num1, num2);
-	while (*(res + i) == 48)
+	res = _mult(argsv[0], argsv[1]); /* perform multiplication */
+	if (!res) /* if malloc failed */
+	{
+		print_res("Error");
+		return (-1);
+	}
+	while (*(res + i) == 48) /* handle leading zeros */
+	{
+		if (i == (int)strlen(res) - 1)
+			break;
 		i++;
-	printf("%s\n", res + i);
+	}
+	print_res(res + i);
 	free(res);
 	return (0);
 }
@@ -102,4 +103,18 @@ int num_check(int count, char **args)
 		}
 	}
 	return (1);
+}
+/**
+ * print_res - prints string to stdout, followed by a newline
+ * @msg: the string to print
+ * Return: void
+ */
+void print_res(char *msg)
+{
+	while (*msg)
+	{
+		_putchar(*msg);
+		msg++;
+	}
+	_putchar(10);
 }
