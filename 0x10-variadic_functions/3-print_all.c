@@ -38,8 +38,9 @@ void print_all(const char * const format, ...)
 				printf(", ");
 			i++;
 		}
-		printf("\n"), va_end(arg_list);
+		va_end(arg_list);
 	}
+	printf("\n");
 }
 
 /**
@@ -52,7 +53,6 @@ void print_str(char *str)
 	int check;
 
 	check = (str == NULL);
-	printf("check: %d\n", check);
 	switch (check)
 	{
 	case 1:
