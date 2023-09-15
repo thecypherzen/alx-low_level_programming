@@ -1,4 +1,4 @@
-include "function_pointers.h"
+#include "function_pointers.h"
 
 /**
  * print_name - prints a name
@@ -8,6 +8,6 @@ include "function_pointers.h"
  */
 void print_name(char *name, void (*f)(char *))
 {
-	if (name)
+	if (name && f)
 		f(name);
 }
