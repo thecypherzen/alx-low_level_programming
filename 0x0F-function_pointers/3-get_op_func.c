@@ -1,4 +1,4 @@
-#include "3-cal.h"
+#include "3-calc.h"
 
 /**
  * get_op_func - select operation to perform
@@ -7,7 +7,7 @@
  */
 int (*get_op_func(char *s))(int, int)
 {
-	opr_t oprs[] = {
+	op_t oprs[] = {
 		{"+", op_add},
 		{"-", op_sub},
 		{"*", op_mul},
@@ -23,5 +23,5 @@ int (*get_op_func(char *s))(int, int)
 			return (oprs[i].f);
 		i++;
 	}
-	return (NULL); /* what's happening? */
+	return (NULL);
 }
