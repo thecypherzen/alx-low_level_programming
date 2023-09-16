@@ -31,7 +31,7 @@ void print_elem_hex(int elem)
  */
 int main(void)
 {
-	int *array = NULL;
+	int array[5] = {1, 2, 10, 9, 8};
 
     array_iterator(array, 5, NULL);
     array_iterator(array, 5, NULL);
