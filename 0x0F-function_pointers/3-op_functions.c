@@ -1,5 +1,5 @@
 #include "3-cal.h"
-
+/* here's all functions for project 3 */
 /**
  * op_add - adds two numbers
  * @a: number 1

@@ -1,7 +1,7 @@
 #include "3-cal.h"
 
 /**
- * main - controls operation sequence
+ * main - controls operation sequence for project 3
  * @args: number of arguments
  * @list: array of arguments
  * Return: result of operation on success

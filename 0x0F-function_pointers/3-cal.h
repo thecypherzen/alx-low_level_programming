@@ -1,4 +1,4 @@
-#ifndef _MUL_H_
+#ifndef _MUL_H_ /* mul header */
 #define _MUL_H_
 #include <stdio.h>
 #include <string.h>
