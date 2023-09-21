@@ -29,14 +29,10 @@ list_t *add_node(list_t **head, const char *str)
  */
 int _strlen(char *s)
 {
-        int len;
+	int len;
 
-        len = 0;
-
-        while (*s != '\0')
-        {
-                len++;
-                s++;
-        }
-        return (len);
+	len = 0;
+	while (*s != '\0')
+		len++, s++;
+	return (len);
 }
