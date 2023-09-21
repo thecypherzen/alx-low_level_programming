@@ -27,7 +27,7 @@ list_t *add_node(list_t **head, const char *str)
  * @s: pointer to string
  * Return: length of string
  */
-int _strlen(char *s)
+int _strlen(const char *s)
 {
 	int len;
 
