@@ -19,9 +19,25 @@ typedef struct list_s
 	unsigned int len;
 	struct list_s *next;
 } list_t;
+
+/**
+ * _strlen - returns the length of a string
+ * @s: pointer to string.
+ * Return: length of string
+ *
+ *int _strlen(const char *s)
+ *{
+ *	int len;
+ *
+ *	len = 0;
+ *	while (*s != '\0')
+ *		len++, s++;
+ *	return (len);
+ *}
+ */
+
 typedef unsigned int u_int;
 int _putchar(char);
-int _strlen(const char *s);
 size_t print_list(const list_t *h);
 size_t list_len(const list_t *h);
 list_t *add_node(list_t **head, const char *str);
