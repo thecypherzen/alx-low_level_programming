@@ -1,7 +1,7 @@
 	;; prints a message to stdout using syscall
 
 	section .data 		;data section start
-msg:	db "Hello, Holberton", 10, 10
+msg:	db "Hello, Holberton", 10
 
 	section .text 		;text section start
 	global main

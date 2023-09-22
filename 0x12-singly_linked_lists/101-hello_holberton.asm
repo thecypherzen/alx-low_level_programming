@@ -15,4 +15,5 @@ main:
 
 	mov rsp, rbp
 	pop rbp
+	mov rax, 0
 	ret
