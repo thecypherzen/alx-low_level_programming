@@ -18,10 +18,10 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 		return (NULL);
 
 	list_len = listint_len(*head);
-	printf("list len: %d\n", list_len);
-	if (idx > list_len - 1)
+	if (idx > list_len)
 	{
-		printf("index out of range\n");
+		printf("index: %u > len %u. exiting\n", idx, list_len);
+		free(newNode);
 		return (NULL);
 	}
 	newNode->n = n;
@@ -37,7 +37,6 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 		newNode->next = oldNode;
 		*head = newNode;
 	}
-	printf("listlen 2: %d\n", (int)listint_len(*head));
 	return (newNode);
 }
 
