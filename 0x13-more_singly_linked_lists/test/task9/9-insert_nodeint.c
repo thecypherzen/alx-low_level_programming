@@ -14,12 +14,16 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	_uint list_len;
 
 	newNode = malloc(sizeof(listint_t));
-	if (!head || !(*head) || !newNode)
+	if (!head || !newNode || (!(*head) && idx))
 		return (NULL);
 
 	list_len = listint_len(*head);
+	printf("list len: %d\n", list_len);
 	if (idx > list_len - 1)
+	{
+		printf("index out of range\n");
 		return (NULL);
+	}
 	newNode->n = n;
 	if (idx > 0)
 	{
@@ -33,6 +37,7 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 		newNode->next = oldNode;
 		*head = newNode;
 	}
+	printf("listlen 2: %d\n", (int)listint_len(*head));
 	return (newNode);
 }
 
