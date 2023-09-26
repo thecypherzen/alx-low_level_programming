@@ -16,7 +16,6 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 		return (-1);
 
 	list_len = listint_len(*head);
-	printf("\n******* list len: %d *******\n", list_len);
 	if (!list_len || index > list_len - 1)
 		return (-1);
 	if (list_len == 1)
@@ -28,7 +27,6 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 	{
 		if (index > 0)
 		{
-			printf("deleting node @ position: %d\n", index);
 			nodeBefore = get_nodeint_at_index(*head, index - 1);
 			node_to_delete = nodeBefore->next;
 			nodeBefore->next = node_to_delete->next;
@@ -36,7 +34,6 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 		}
 		else
 		{
-			printf("deleting head (%d !> 0)\n", index);
 			node_to_delete = *head;
 			*head = node_to_delete->next;
 			free(node_to_delete);
