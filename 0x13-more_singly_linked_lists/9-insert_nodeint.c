@@ -20,7 +20,6 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	list_len = listint_len(*head);
 	if (idx > list_len)
 	{
-		printf("index: %u > len %u. exiting\n", idx, list_len);
 		free(newNode);
 		return (NULL);
 	}
