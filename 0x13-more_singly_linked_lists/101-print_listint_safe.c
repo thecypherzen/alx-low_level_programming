@@ -22,21 +22,24 @@ size_t print_listint_safe(const listint_t *head)
 			while (slow != fast)
 			{
 				printf("[%p] %d\n", (void *)slow, slow->n);
-				slow = slow->next, nodes++;
+				slow = slow->next, fast = fast->next, nodes++;
 			}
 			printf("[%p] %d\n", (void *)slow, slow->n), nodes++;
 			slow = slow->next;
 			while (slow != fast)
-				printf("[%p] %d\n", (void *)slow, slow->n), nodes++;
+			{
+				printf("[%p] %d\n", (void *)slow, slow->n);
+				slow = slow->next, nodes++;
+			}
 			printf("->[%p] %d\n", (void *)slow, slow->n);
 			return (nodes);
 		}
 	}
+	slow = head;
 	while (slow)
 	{
 		printf("[%p] %d\n", (void *)slow, slow->n);
-		nodes++;
-		slow = slow->next;
+		nodes++, slow = slow->next;
 	}
 	return (nodes);
 }
