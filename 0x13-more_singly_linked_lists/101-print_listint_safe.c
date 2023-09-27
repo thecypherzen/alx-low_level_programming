@@ -1,4 +1,4 @@
-#include "main.h"
+#include "lists.h"
 
 /**
  * print_listint_safe - Prints a listint_t linked list safely
@@ -32,7 +32,7 @@ size_t print_listint_safe(const listint_t *head)
 			return (nodes);
 		}
 	}
-	while (slow_ptr)
+	while (slow)
 	{
 		printf("[%p] %d\n", (void *)slow, slow->n);
 		nodes++;
@@ -41,5 +41,4 @@ size_t print_listint_safe(const listint_t *head)
 
 
 	return (nodes);
-}
 }
