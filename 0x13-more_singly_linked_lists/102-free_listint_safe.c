@@ -44,5 +44,5 @@ size_t free_listint_safe(listint_t **h)
 			temp = slow, slow = slow->next, free(temp), nodes++;
 		*h = NULL;
 	}
-	return (nodes * sizeof(listint_t));
+	return (nodes);
 }
