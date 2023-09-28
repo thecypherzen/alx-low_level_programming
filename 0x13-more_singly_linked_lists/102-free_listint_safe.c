@@ -1,43 +1,48 @@
 #include "lists.h"
 
 /**
- * print_listint_safe - Prints a listint_t linked list safely
- * @head: A pointer to the head of the list
- * Return: The number of nodes in the list
+ * free_listint_safe - Frees a listint_t linked list safely
+ * @h: A pointer to the head of the list
+ * Return: The size of free'd list
  */
-size_t print_listint_safe(const listint_t *head)
+size_t free_listint_safe(listint_t **h)
 {
-	size_t nodes = 0;
-	const listint_t *slow, *fast;
+	size_t nodes = 0, loop = 0;
+	listint_t *slow, *fast, *temp;
 
-	if (!head)
-		return (98);
-	slow = head, fast = head;
+	if (!h || !(*h))
+		return (0);
+	slow = *h, fast = *h;
 	while (fast && fast->next)
 	{
 		slow = slow->next, fast = fast->next->next;
 		if (slow == fast)
 		{
-			slow = head;
-			while (slow != fast)
-			{
-				printf("[%p] %d\n", (void *)slow, slow->n);
-				slow = slow->next, nodes++;
-			}
-			printf("[%p] %d\n", (void *)slow, slow->n), nodes++;
-			slow = slow->next;
-			while (slow != fast)
-				printf("[%p] %d\n", (void *)slow, slow->n), nodes++;
-			printf("->[%p] %d\n", (void *)slow, slow->n);
-			printf("nodes: %d\n", nodes);
-			return (nodes);
+			loop = 1;
+			break;
 		}
 	}
-	while (slow)
+	slow = *h;
+	if (loop)
 	{
-		printf("[%p] %d\n", (void *)slow, slow->n);
-		nodes++;
+		while (slow != fast)
+		{
+			temp = slow, slow = slow->next, fast = fast->next;
+			free(temp), nodes++;
+		}
 		slow = slow->next;
+		while (slow != fast)
+		{
+			temp = slow, slow = slow->next;
+			free(temp), nodes++;
+		}
+		free(slow), nodes++, *h = NULL;
 	}
-	return (nodes);
+	else
+	{
+		while (slow)
+			temp = slow, slow = slow->next, free(temp), nodes++;
+		*h = NULL;
+	}
+	return (nodes * sizeof(listint_t));
 }
