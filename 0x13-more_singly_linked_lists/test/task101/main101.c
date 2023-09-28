@@ -24,7 +24,8 @@ int main(void)
     add_nodeint(&head2, 98);
     add_nodeint(&head2, 402);
     add_nodeint(&head2, 1024);
-    print_listint_safe(head2);
+    n = print_listint_safe(head2);
+    printf("Nodes -> %lu\n", n);
     head = NULL;
     node = add_nodeint(&head, 0);
     add_nodeint(&head, 1);

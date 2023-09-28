@@ -11,7 +11,7 @@ size_t print_listint_safe(const listint_t *head)
 	const listint_t *slow, *fast;
 
 	if (!head)
-		return (98);
+		return (0);
 	slow = head, fast = head;
 	while (fast && fast->next)
 	{
