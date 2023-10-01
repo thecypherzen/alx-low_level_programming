@@ -8,10 +8,14 @@
  */
 int clear_bit(unsigned long int *n, unsigned int index)
 {
+	_uint bin;
+
 	if (index > 63)
 		return (-1);
-	if (*n == 0)
-		return (1);
-	*n ^= (1 << index);
+	bin = (*n >> index) & 1;
+	if (bin)
+		*n ^= (1 << index);
+	else
+		*n ^= (0 <<index);
 	return (1);
 }
