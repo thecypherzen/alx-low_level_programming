@@ -55,7 +55,7 @@ int close_fd(ssize_t fd_a)
 	res_fd_a = close(fd_a);
 	if (res_fd_a < 0)
 	{
-		dprintf(STDOUT_FILENO, "Error: Can't close fd %lu\n",
+		dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n",
 			fd_a);
 		exit(100);
 	}
@@ -67,7 +67,7 @@ int close_fd(ssize_t fd_a)
  */
 int wrong_args(void)
 {
-	dprintf(STDOUT_FILENO, "Usage: cp file_from file_to\n");
+	dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 	return (97);
 }
 /**
@@ -77,7 +77,7 @@ int wrong_args(void)
  */
 int read_fail(char *fname)
 {
-	dprintf(STDOUT_FILENO, "Error: Can't read from file %s\n", fname);
+	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", fname);
 	return (98);
 }
 /**
@@ -87,6 +87,6 @@ int read_fail(char *fname)
  */
 int write_fail(char *fname)
 {
-	dprintf(STDOUT_FILENO, "Error: Can't write to file %s\n", fname);
+	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", fname);
 	return (99);
 }
