@@ -30,7 +30,6 @@ int main(int agc, char **agv)
 		pos = lseek(fd_src, pos, SEEK_SET);
 		if (pos >= 0)
 		{
-			printf("pos b4: %lu | ", pos);
 			bytes_rd = read(fd_src, buffr, BUFF_SIZE);
 			if (bytes_rd < 0)
 				return (read_fail(agv[1]));
@@ -38,8 +37,6 @@ int main(int agc, char **agv)
 			if (bytes_wtn < 0)
 				return (write_fail(agv[2]));
 			pos += bytes_rd;
-			printf("pos aft: %lu\n", pos);
-			printf("bytes read: %lu | bytes_written: %lu\n\n",
 			       bytes_rd, bytes_wtn);
 			close_fd(fd_dest);
 		}
