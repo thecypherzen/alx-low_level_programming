@@ -87,6 +87,6 @@ int read_fail(char *fname)
  */
 int write_fail(char *fname)
 {
-	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", fname);
+	dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", fname);
 	return (99);
 }
