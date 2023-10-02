@@ -37,7 +37,6 @@ int main(int agc, char **agv)
 			if (bytes_wtn < 0)
 				return (write_fail(agv[2]));
 			pos += bytes_rd;
-			       bytes_rd, bytes_wtn);
 			close_fd(fd_dest);
 		}
 		reading = bytes_rd < BUFF_SIZE ? 0 : 1;
