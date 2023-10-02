@@ -16,17 +16,17 @@ int main(int agc, char **agv)
 	char *buffr;
 
 	if (agc != 3)
-		return (wrong_args(agv[0]));
+		return (wrong_args());
 	fd_src = open(agv[1], O_RDONLY), buffr = malloc(BUFF_SIZE);
 	if (fd_src < 0)
 		return (read_fail(agv[1]));
+	fd_dest = open(agv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	if (fd_dest < 0)
+		return (write_fail(agv[2]));
 	if (!buffr)
 		return (1);
 	while (reading)
 	{
-		fd_dest = open(agv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
-		if (fd_dest < 0)
-			return (write_fail(agv[2]));
 		pos = lseek(fd_src, pos, SEEK_SET);
 		if (pos >= 0)
 		{
@@ -36,39 +36,41 @@ int main(int agc, char **agv)
 			bytes_wtn = write(fd_dest, buffr, bytes_rd);
 			if (bytes_wtn < 0)
 				return (write_fail(agv[2]));
-			pos += bytes_rd, close_fd(fd_dest);
+			pos += bytes_rd;
 		}
 		reading = bytes_rd < BUFF_SIZE ? 0 : 1;
 	}
-	free(buffr), close_fd(fd_src);
+	free(buffr), close_fd(fd_src, fd_dest);
 	return (0);
 }
 /**
  * close_fd - closes a file descriptor
  * @fd_a: first file descriptor
+ * @fd_b: second file descriptor
  * Return: 100 if close failed. 0 if successful
  */
-int close_fd(ssize_t fd_a)
+int close_fd(ssize_t fd_a, ssize_t fd_b)
 {
-	ssize_t res_fd_a;
+	ssize_t res_fd_a, res_fd_b;
 
-	res_fd_a = close(fd_a);
+	res_fd_a = close(fd_a), res_fd_b = close(fd_b);
 	if (res_fd_a < 0)
-	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n",
 			fd_a);
+	if (res_fd_b < 0)
+		dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n",
+			fd_b);
+	if (res_fd_a < 0 || res_fd_b < 0)
 		exit(100);
-	}
 	return (0);
 }
 /**
  * wrong_args - prints message if wrong arguments are passed
- * @fname: filename of executable
  * Return: 97 always
  */
-int wrong_args(char *fname)
+int wrong_args(void)
 {
-	dprintf(STDERR_FILENO, "Usage: %s file_from file_to\n", fname);
+	dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 	return (97);
 }
 /**
