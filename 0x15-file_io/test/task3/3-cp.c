@@ -12,12 +12,13 @@
 int main(int agc, char **agv)
 {
 	size_t reading = 1;
-	ssize_t fd_src, fd_dest, bytes_wtn, bytes_rd, pos = 0;
+	ssize_t fd_src, fd_dest, bytes_wtn, bytes_rd, res, pos = 0;
 	char *buffr;
 
 	if (agc != 3)
 		return (wrong_args(agv[0]));
 	fd_src = open(agv[1], O_RDONLY), buffr = malloc(BUFF_SIZE);
+	fd_src = -1;
 	if (fd_src < 0)
 		return (read_fail(agv[1]));
 	if (!buffr)
@@ -37,11 +38,13 @@ int main(int agc, char **agv)
 			if (bytes_wtn < 0)
 				return (write_fail(agv[2]));
 			pos += bytes_rd;
-			close_fd(fd_dest);
+			res = close_fd(fd_dest);
+			printf("Close Res: %ld\n", res);
 		}
 		reading = bytes_rd < BUFF_SIZE ? 0 : 1;
 	}
-	free(buffr), close_fd(fd_src);
+	free(buffr), res = close_fd(fd_src);
+	printf("Final res: %ld\n", res);
 	return (0);
 }
 /**
@@ -49,17 +52,18 @@ int main(int agc, char **agv)
  * @fd_a: first file descriptor
  * Return: 100 if close failed. 0 if successful
  */
-void close_fd(ssize_t fd_a)
+int close_fd(ssize_t fd_a)
 {
 	ssize_t res_fd_a;
 
 	res_fd_a = close(fd_a);
 	if (res_fd_a < 0)
 	{
-		dprintf(STDOUT_FILENO, "Error: Can't close fd %lu\n\n",
+		dprintf(STDOUT_FILENO, "Error: Can't close fd %lu\n",
 			fd_a);
 		exit(100);
 	}
+	return (0);
 }
 /**
  * wrong_args - prints message if wrong arguments are passed

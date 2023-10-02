@@ -21,7 +21,7 @@ int main(int agc, char **agv)
 	if (fd_src < 0)
 		return (read_fail(agv[1]));
 	if (!buffr)
-		return (-1);
+		return (1);
 	while (reading)
 	{
 		fd_dest = open(agv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
@@ -36,8 +36,7 @@ int main(int agc, char **agv)
 			bytes_wtn = write(fd_dest, buffr, bytes_rd);
 			if (bytes_wtn < 0)
 				return (write_fail(agv[2]));
-			pos += bytes_rd;
-			close_fd(fd_dest);
+			pos += bytes_rd, close_fd(fd_dest);
 		}
 		reading = bytes_rd < BUFF_SIZE ? 0 : 1;
 	}
@@ -49,26 +48,26 @@ int main(int agc, char **agv)
  * @fd_a: first file descriptor
  * Return: 100 if close failed. 0 if successful
  */
-void close_fd(ssize_t fd_a)
+int close_fd(ssize_t fd_a)
 {
 	ssize_t res_fd_a;
 
 	res_fd_a = close(fd_a);
 	if (res_fd_a < 0)
 	{
-		dprintf(STDOUT_FILENO, "Error: Can't close fd %lu\n\n",
+		dprintf(STDOUT_FILENO, "Error: Can't close fd %lu\n",
 			fd_a);
 		exit(100);
 	}
+	return (0);
 }
 /**
  * wrong_args - prints message if wrong arguments are passed
- * @fname: filename passed as argument
  * Return: 97 always
  */
-int wrong_args(char *fname)
+int wrong_args(void)
 {
-	dprintf(STDOUT_FILENO, "Usage: %s file_from file_to\n", fname);
+	dprintf(STDOUT_FILENO, "Usage: cp file_from file_to\n");
 	return (97);
 }
 /**
@@ -88,6 +87,6 @@ int read_fail(char *fname)
  */
 int write_fail(char *fname)
 {
-	dprintf(STDOUT_FILENO, "Error: Can't write to %s\n", fname);
+	dprintf(STDOUT_FILENO, "Error: Can't write to file %s\n", fname);
 	return (99);
 }
