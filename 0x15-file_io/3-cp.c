@@ -16,7 +16,7 @@ int main(int agc, char **agv)
 	char *buffr;
 
 	if (agc != 3)
-		return (wrong_args(agv[0]));
+		return (wrong_args());
 	fd_src = open(agv[1], O_RDONLY), buffr = malloc(BUFF_SIZE);
 	if (fd_src < 0)
 		return (read_fail(agv[1]));

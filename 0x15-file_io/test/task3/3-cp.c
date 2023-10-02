@@ -12,17 +12,16 @@
 int main(int agc, char **agv)
 {
 	size_t reading = 1;
-	ssize_t fd_src, fd_dest, bytes_wtn, bytes_rd, res, pos = 0;
+	ssize_t fd_src, fd_dest, bytes_wtn, bytes_rd, pos = 0;
 	char *buffr;
 
 	if (agc != 3)
-		return (wrong_args(agv[0]));
+		return (wrong_args());
 	fd_src = open(agv[1], O_RDONLY), buffr = malloc(BUFF_SIZE);
-	fd_src = -1;
 	if (fd_src < 0)
 		return (read_fail(agv[1]));
 	if (!buffr)
-		return (-1);
+		return (1);
 	while (reading)
 	{
 		fd_dest = open(agv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
@@ -37,14 +36,11 @@ int main(int agc, char **agv)
 			bytes_wtn = write(fd_dest, buffr, bytes_rd);
 			if (bytes_wtn < 0)
 				return (write_fail(agv[2]));
-			pos += bytes_rd;
-			res = close_fd(fd_dest);
-			printf("Close Res: %ld\n", res);
+			pos += bytes_rd, close_fd(fd_dest);
 		}
 		reading = bytes_rd < BUFF_SIZE ? 0 : 1;
 	}
-	free(buffr), res = close_fd(fd_src);
-	printf("Final res: %ld\n", res);
+	free(buffr), close_fd(fd_src);
 	return (0);
 }
 /**
@@ -59,7 +55,7 @@ int close_fd(ssize_t fd_a)
 	res_fd_a = close(fd_a);
 	if (res_fd_a < 0)
 	{
-		dprintf(STDOUT_FILENO, "Error: Can't close fd %lu\n",
+		dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n",
 			fd_a);
 		exit(100);
 	}
@@ -67,12 +63,11 @@ int close_fd(ssize_t fd_a)
 }
 /**
  * wrong_args - prints message if wrong arguments are passed
- * @fname: filename passed as argument
  * Return: 97 always
  */
-int wrong_args(char *fname)
+int wrong_args(void)
 {
-	dprintf(STDOUT_FILENO, "Usage: %s file_from file_to\n", fname);
+	dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 	return (97);
 }
 /**
@@ -82,7 +77,7 @@ int wrong_args(char *fname)
  */
 int read_fail(char *fname)
 {
-	dprintf(STDOUT_FILENO, "Error: Can't read from file %s\n", fname);
+	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", fname);
 	return (98);
 }
 /**
@@ -92,6 +87,6 @@ int read_fail(char *fname)
  */
 int write_fail(char *fname)
 {
-	dprintf(STDOUT_FILENO, "Error: Can't write to %s\n", fname);
+	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", fname);
 	return (99);
 }
