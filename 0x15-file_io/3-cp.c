@@ -16,7 +16,7 @@ int main(int agc, char **agv)
 	char *buffr;
 
 	if (agc != 3)
-		return (wrong_args(agv[0]));
+		return (wrong_args());
 	fd_src = open(agv[1], O_RDONLY), buffr = malloc(BUFF_SIZE);
 	if (fd_src < 0)
 		return (read_fail(agv[1]));
@@ -63,12 +63,11 @@ int close_fd(ssize_t fd_a)
 }
 /**
  * wrong_args - prints message if wrong arguments are passed
- * @fname: filename of executable
  * Return: 97 always
  */
-int wrong_args(char *fname)
+int wrong_args(void)
 {
-	dprintf(STDERR_FILENO, "Usage: %s file_from file_to\n", fname);
+	dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 	return (97);
 }
 /**

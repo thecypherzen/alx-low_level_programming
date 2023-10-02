@@ -17,7 +17,7 @@ int create_file(const char *filename, char *text_content);
 int append_text_to_file(const char *filename, char *text_content);
 size_t _strlen(char *str);
 int close_fd(ssize_t fd_a);
-int wrong_args(char *);
+int wrong_args(void);
 int read_fail(char *);
 int write_fail(char *);
 #endif
