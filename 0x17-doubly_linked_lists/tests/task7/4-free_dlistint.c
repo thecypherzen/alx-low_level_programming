@@ -7,35 +7,27 @@
  */
 void free_dlistint(dlistint_t *head)
 {
-	dlistint_t *curr, *temp;
+	dlistint_t *temp;
 	size_t fwd;
 
 	if (head)
 	{
 		fwd = !head->prev ? 1 : 0;
-		curr = head, temp = head;
 		if (fwd)
 		{
-			while (temp->next)
+			while (head)
 			{
-				temp = temp->next;
-				temp->prev = NULL;
-				head = temp;
-				free(curr);
-				curr = temp;
+				temp = head, head = head->next;
+				free(temp);
 			}
 		}
 		else
 		{
-			while (temp->prev)
+			while (head)
 			{
-				temp = temp->prev;
-				temp->next = NULL;
-				head = temp;
-				free(curr);
-				curr = temp;
+				temp = head, head = head->prev;
+				free(temp);
 			}
 		}
-		free(head), head = NULL;
 	}
 }
