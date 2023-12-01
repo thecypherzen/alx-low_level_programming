@@ -32,5 +32,6 @@ The project strives to teach:
 Files on the project are task based and are as follows:
 | SN | File | Description |
 |----|------|-------------|
-| 1. |[0-hash_table_create.c](https://github.com)  | Project header file of protypes. |
-| 2. | Pending |      |
+| 1. |[hash_tables.h](https://github.com/thecypherzen/alx-low_level_programming/blob/main/0x1A-hash_tables/0-hash_table_create.c)  | Project header file of protypes. |
+| 2. | [0-hash_table_create.c](https://github.com/thecypherzen/alx-low_level_programming/blob/main/0x1A-hash_tables/hash_tables.h) |A function that creates a hash table.<ul><li>Returns a pointer to the newly created hash table on success.</li><li>NULL if error occurs.</li></ul>|
+| 3. | [1-djb2.c](https://github.com/thecypherzen/alx-low_level_programming/blob/main/0x1A-hash_tables/1-djb2.c)| A hash function implementing the djb2 algorithm.<ul><li>Copied from [see source](https://gist.github.com/papamuziko/7bb52dfbb859fdffc4bd0f95b76f71e8)</li></ul>|
