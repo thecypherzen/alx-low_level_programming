@@ -42,3 +42,23 @@ void hash_table_print(hash_table_t *ht)
 	}
 	printf("}\n");
 }
+
+/**
+ * hash_length - gets the length of a hash table
+ * @ht: hash table pointer
+ * Return: the number of items in hash table
+ */
+ul_int hash_length(hash_table_t *ht)
+{
+	ul_int size, i, ht_len = 0;
+
+	if (!ht)
+		return (ht_len);
+
+	size = ht->size;
+	for (i = 0; i < size; i++)
+	{
+		ht_len += bucket_len(ht->array[i]);
+	}
+	return (ht_len);
+}
