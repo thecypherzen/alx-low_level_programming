@@ -27,20 +27,6 @@ void hash_table_print(hash_table_t *ht)
 			}
 		}
 	}
-	/*for (i = 0; i < size; i++)
-	{
-		if (ht->array[i])
-		{
-			temp = ht->array[i]->next;
-			while (temp)
-			{
-				printf("   key: %s | value:%s\n", temp->key, temp->value);
-				if (++n != hash_len)
-					printf(", ");
-				temp = temp->next;
-			}
-		}
-	} */
 	printf("}\n");
 }
 
