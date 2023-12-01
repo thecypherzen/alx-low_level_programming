@@ -47,7 +47,8 @@ ul_int key_index(const unsigned char *key, ul_int size);
 int hash_table_set(hash_table_t *ht, const char *key, const char *value);
 ul_int bucket_len(hash_node_t *bucket);
 int key_exists(hash_node_t *bucket, const char *key);
-void print_hash(hash_table_t *ht);
+void hash_table_print(hash_table_t *ht);
 void free_hash(hash_table_t *ht);
 char *hash_table_get(const hash_table_t *ht, const char *key);
+ul_int hash_length(hash_table_t *ht);
 #endif /* _HASH_T*/
