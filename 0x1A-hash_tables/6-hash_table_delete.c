@@ -1,11 +1,11 @@
 #include "hash_tables.h"
 
 /**
- * free_hash - frees a hash table
+ * hash_table_delete - frees a hash table
  * @ht: ptr to hash table
  * Return: void always
  */
-void free_hash(hash_table_t *ht)
+void hash_table_delete(hash_table_t *ht)
 {
 	ul_int size, i;
 	hash_node_t *temp, *to_free = NULL;
@@ -30,4 +30,5 @@ void free_hash(hash_table_t *ht)
 	}
 	free(ht->array);
 	free(ht);
+	ht = NULL;
 }
