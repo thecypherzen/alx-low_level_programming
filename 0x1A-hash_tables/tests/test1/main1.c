@@ -5,7 +5,7 @@ int main(void)
 	char *str;
 
 	str = "what a world";
-	printf("%lu\n", hash_djb2((const unsigned char *)str));
+	printf("%lu\n", hash_djb2(NULL));
 
 	str = NULL;
 	printf("%lu\n", hash_djb2((const unsigned char *)str));
