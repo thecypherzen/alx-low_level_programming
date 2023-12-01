@@ -9,12 +9,9 @@ void hash_table_print(hash_table_t *ht)
 	ul_int size, i, hash_len, n = 0;
 	hash_node_t *temp;
 
-	printf("{");
 	if (!ht)
-	{
-		printf("}\n");
 		return;
-	}
+	printf("{");
 	size = ht->size, hash_len = hash_length(ht);
 	for (i = 0; i < size; i++)
 	{
