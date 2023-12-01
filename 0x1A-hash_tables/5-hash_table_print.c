@@ -18,12 +18,16 @@ void hash_table_print(hash_table_t *ht)
 		if (ht->array[i])
 		{
 			temp = ht->array[i];
-			printf("'%s': '%s'", temp->key, temp->value);
-			if (++n != hash_len)
-				printf(", ");
+			while (temp)
+			{
+				printf("'%s': '%s'", temp->key, temp->value);
+				if (++n != hash_len)
+					printf(", ");
+				temp = temp->next;
+			}
 		}
 	}
-	for (i = 0; i < size; i++)
+	/*for (i = 0; i < size; i++)
 	{
 		if (ht->array[i])
 		{
@@ -36,7 +40,7 @@ void hash_table_print(hash_table_t *ht)
 				temp = temp->next;
 			}
 		}
-	}
+	} */
 	printf("}\n");
 }
 
