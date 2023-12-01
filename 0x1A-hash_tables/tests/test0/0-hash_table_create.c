@@ -5,8 +5,8 @@
  * @size: the size of the hash table
  * Return: ptr to hash table on success. NULL otherwise
  */
- hash_table_t *hash_table_create(unsigned long int size)
- {
+hash_table_t *hash_table_create(ul_int size)
+{
 	hash_table_t *h_table = NULL;
 
 	if (!size)
@@ -23,5 +23,6 @@
 
 	/* set array size */
 	h_table->size = size;
-	return h_table;
- }
+
+	return (h_table);
+}

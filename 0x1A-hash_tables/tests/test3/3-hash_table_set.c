@@ -1,11 +1,5 @@
 #include "hash_tables.h"
-/**
- * hash_table_set - sets a key-value mapping in hash table
- * @ht: ptr to hash table
- * @key: entry key string
- * @value: entry value string
- * Return: 1 on succcess, 0 otherwise.
- */
+
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	int SUCCESS = 1;
@@ -42,7 +36,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 /**
  * key_exists - checks if a key already exists in hash table
- * @bucket: current hash buckeck ptr
+ * @ht: hash table ptr
  * @key: the key being checked
  * Return: 1 if key exists, 0 otherwise.
  */
