@@ -51,11 +51,11 @@ typedef struct hash_table_s
  */
 typedef struct shash_node_s
 {
-    char *key;
-    char *value;
-    struct shash_node_s *next;
-    struct shash_node_s *sprev;
-    struct shash_node_s *snext;
+	char *key;
+	char *value;
+	struct shash_node_s *next;
+	struct shash_node_s *sprev;
+	struct shash_node_s *snext;
 } shash_node_t;
 
 /**
@@ -70,10 +70,10 @@ typedef struct shash_node_s
  */
 typedef struct shash_table_s
 {
-    ul_int size;
-    shash_node_t **array;
-    shash_node_t *shead;
-    shash_node_t *stail;
+	ul_int size;
+	shash_node_t **array;
+	shash_node_t *shead;
+	shash_node_t *stail;
 } shash_table_t;
 
 
@@ -95,7 +95,7 @@ void hash_table_delete(hash_table_t *ht);
 shash_table_t *shash_table_create(ul_int size);
 int shash_table_set(shash_table_t *ht, const char *key,
 		const char *value);
-shash_node_t *get_prev_node(shash_node_t *shead, const char * key);
+shash_node_t *get_prev_node(shash_node_t *shead, const char *key);
 int bucket_insert(shash_table_t *ht, ul_int index,
 		shash_node_t *new_node, const char *key,
 		const char *value);
@@ -104,4 +104,5 @@ void shash_table_print_rev(const shash_table_t *ht);
 char *shash_table_get(const shash_table_t *ht, const char *key);
 void shash_table_delete(shash_table_t *ht);
 shash_node_t *_key_exists(shash_table_t *, ul_int, const char *);
+void _shash_table_print(shash_table_t *ht);
 #endif /* _HASH_T*/

@@ -26,7 +26,10 @@ The project strives to teach:
 	ROOT
 	| - README.md
 	| - hash_table.h
-	| - All task files and modules
+	| - task-based C files
+	| - TESTS - folder of test files in subdirectories
+		| - test0,...,test4
+		| - test6, test 7
 
 ## Files ##
 Files on the project are task based and are as follows:

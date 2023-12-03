@@ -15,8 +15,7 @@ shash_table_t *shash_table_create(ul_int size)
 	table = malloc(sizeof(shash_table_t));
 	if (!table)
 		return (NULL);
-	table->shead = NULL;
-	table->stail = NULL;
+	table->shead = NULL, table->stail = NULL;
 	table->size = size;
 	table->array = malloc(sizeof(shash_node_t *) * size);
 	if (!table->array)
@@ -128,17 +127,10 @@ int bucket_insert(shash_table_t *ht, ul_int index,
 
 	new_node->key = strdup(key);
 	new_node->value = strdup(value);
-	new_node->next = NULL;
 
 	temp = ht->array[index];
-	if (!temp)
-		ht->array[index] = new_node;
-	else
-	{
-		while (temp->next)
-			temp = temp->next;
-		temp->next = new_node;
-	}
+	new_node->next = temp;
+	ht->array[index] = new_node;
 	return (!key_exists);
 }
 
