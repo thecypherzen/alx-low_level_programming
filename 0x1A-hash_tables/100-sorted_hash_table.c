@@ -59,23 +59,21 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	{
 		ht->shead = new_node, ht->stail = new_node;
 		new_node->sprev = new_node->snext = NULL;
+		return (success);
+	}
+	prev_node = get_prev_node(ht->shead, key);
+	if (!prev_node)	/* inserting before first slist node */
+	{
+		new_node->snext = ht->shead, new_node->sprev = NULL;
+		ht->shead->sprev = new_node, ht->shead = new_node;
 	}
 	else
 	{
-		prev_node = get_prev_node(ht->shead, key);
-		if (!prev_node)	/* inserting before first slist node */
-		{
-			new_node->snext = ht->shead, new_node->sprev = NULL;
-			ht->shead->sprev = new_node, ht->shead = new_node;
-		}
-		else
-		{
-			if (prev_node->snext)	/* inserting in middle of slist */
-				new_node->snext = prev_node->snext, new_node->snext->sprev = new_node;
-			else	/* inserting at end of slist */
-				new_node->snext = NULL, ht->stail = new_node;
-			prev_node->snext = new_node, new_node->sprev = prev_node;
-		}
+		if (prev_node->snext)	/* inserting in middle of slist */
+			new_node->snext = prev_node->snext, new_node->snext->sprev = new_node;
+		else	/* inserting at end of slist */
+			new_node->snext = NULL, ht->stail = new_node;
+		prev_node->snext = new_node, new_node->sprev = prev_node;
 	}
 	return (success);
 }
@@ -224,8 +222,11 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
  */
 void shash_table_delete(shash_table_t *ht)
 {
-	shash_node_t *temp = ht->shead, *to_free;
+	shash_node_t *temp, *to_free;
 
+	if (!ht)
+		return;
+	temp = ht->shead;
 	while (temp)
 	{
 		to_free = temp;
@@ -247,16 +248,18 @@ void shash_table_delete(shash_table_t *ht)
  */
 shash_node_t *_key_exists(shash_table_t *ht, ul_int index, const char *key)
 {
-	shash_node_t *temp, *exists = NULL;
+	shash_node_t *temp;
 
+	if (!ht)
+		return (NULL);
 	temp = ht->array[index];
 	if (!temp)
-		return (exists);
+		return (NULL);
 	while (temp)
 	{
 		if (!strcmp(temp->key, key))
 			return (temp);
 		temp = temp->next;
 	}
-	return (exists);
+	return (NULL);
 }
