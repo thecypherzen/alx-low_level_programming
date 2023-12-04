@@ -7,35 +7,36 @@
  */
 int main(void)
 {
-	shash_table_t *ht = NULL;
+	shash_table_t *ht;
+	char *value;
 	int ret;
 
 	ht = shash_table_create(1024);
-	if (!ht)
-		printf("table creation failed\n");
-	shash_table_set(ht, "hetairas", "luve");
-	shash_table_set(ht, "heliotropes", "darling");
-	shash_table_set(ht, "serafins", "man");
-	shash_table_set(ht, "depravement", "poster");
-	shash_table_set(ht, "joyful", "first");
-	shash_table_set(ht, "stylist", "1st");
-	shash_table_set(ht, "dram", "twenty");
-	shash_table_set(ht, "redescribed", "1");
-	shash_table_set(ht, "mentioner", "2");
-	shash_table_set(ht, "neurospora", "3");
-	shash_table_set(ht, "subgenera", "4");
-	shash_table_set(ht, "synaphea", "5");
-	shash_table_set(ht, "urites", "6");
-	shash_table_set(ht, "vivency", "7");
-	shash_table_set(ht, "flyby", "1929");
-	shash_table_print(ht);
-	printf("\n\n");
-	ret = shash_table_set(ht, "urites", "dragon");
-	printf("ret = %d\n",ret);
-	shash_table_print(ht);
-	/*printf("--------------------------------------------\n");
-	_shash_table_print(ht);
-	printf("\n");*/
-	shash_table_delete(ht);
+	ret = shash_table_set(ht, "c", "");
+	printf("ret: %d\n", ret);
+	shash_table_set(ht, "python", "awesome");
+	shash_table_set(ht, "Bob", "and Kris love asm");
+	shash_table_set(ht, "N", "queens");
+	shash_table_set(ht, "Asterix", "Obelix");
+	shash_table_set(ht, "Betty", "Cool");
+	shash_table_set(ht, "98", "Battery Street");
+	/*shash_table_set(ht, "c", "isfun");*/
+
+	value = shash_table_get(ht, "python");
+	printf("%s:%s\n", "python", value);
+	value = shash_table_get(ht, "Bob");
+	printf("%s:%s\n", "Bob", value);
+	value = shash_table_get(ht, "N");
+	printf("%s:%s\n", "N", value);
+	value = shash_table_get(ht, "Asterix");
+	printf("%s:%s\n", "Asterix", value);
+	value = shash_table_get(ht, "Betty");
+	printf("%s:%s\n", "Betty", value);
+	value = shash_table_get(ht, "98");
+	printf("%s:%s\n", "98", value);
+	value = shash_table_get(ht, "c");
+	printf("%s:%s\n", "c", value);
+	value = shash_table_get(ht, "javascript");
+	printf("%s:%s\n", "javascript", value);
 	return (EXIT_SUCCESS);
 }

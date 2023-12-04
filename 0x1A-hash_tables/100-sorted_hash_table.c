@@ -43,7 +43,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	ul_int h_index;
 	shash_node_t *new_node, *prev_node;
 
-	if (!ht || !key || !strlen(key))
+	if (!ht || !key || !strlen(key) || !value)
 		return (!success);
 	new_node = malloc(sizeof(shash_node_t));
 	if (!new_node)
