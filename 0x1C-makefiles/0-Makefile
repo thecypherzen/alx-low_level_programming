@@ -1,4 +1,4 @@
 all: run_gcc
 
 run_gcc:
-	gcc main.c -o school
+	gcc main.c school.c -o school
