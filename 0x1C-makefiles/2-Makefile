@@ -4,8 +4,8 @@ OBJ = main.o school.o
 NAME = school
 
 
-all: ${OBJ}
-	${CC} ${OBJ} -o ${NAME}
+all: main.o school.o
+	${CC} main.o school.o -o ${NAME}
 
 main.o: main.c
 	${CC} -c -o $@ main.c
