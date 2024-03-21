@@ -1,7 +1,5 @@
-all: compile_c
-
 CC = gcc
 SRC = $(wildcard *.c)
 
-compile_c:
+all:
 	${CC} ${SRC} -o school
