@@ -1,5 +1,7 @@
-CC = gcc
-SRC = $(sort $(wildcard *.c))
+all: compile_c
 
-all:
+CC = gcc
+SRC = main.c school.c
+
+compile_c:
 	${CC} ${SRC} -o school
