@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """A script that calculates the perimeter of an island grid
 
 Function(s):
@@ -10,10 +10,10 @@ def island_perimeter(grid):
     """ A function that calculates perimeter of island
 
     Parameters:
-    	grid(:list:list): a list of lists of integers
+        grid(:list:list): a list of lists of integers
 
     Returns:
-    	Perimeter of island
+        Perimeter of island
     """
     if not isinstance(grid, list):
         return
