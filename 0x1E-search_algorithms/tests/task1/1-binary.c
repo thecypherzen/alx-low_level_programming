@@ -41,13 +41,13 @@ int binary_search(int *array, size_t size, int value)
  * @start: index to start printing from
  * @stop: index to stop printng at
  */
-void print_subarray(int *array, size_t start, size_t stop){
+void print_subarray(int *array, size_t start, size_t stop)
+{
 	size_t i;
 
-	printf("[%lu], [%lu]: ", start, stop);
-	printf("Searching in array:");
+	printf("Searching in array: ");
 	for (i = start; i <= stop; i++)
 	{
-		printf("%d%c", array[i], i != stop ? ',' : '\n');
+		printf("%d%s", array[i], i != stop ? ", " : "\n");
 	}
 }
