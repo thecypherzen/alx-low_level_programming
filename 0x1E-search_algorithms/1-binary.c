@@ -45,8 +45,7 @@ void print_subarray(int *array, size_t start, size_t stop)
 {
 	size_t i;
 
-	printf("[%lu], [%lu]: ", start, stop);
-	printf("Searching in array:");
+	printf("Searching in array: ");
 	for (i = start; i <= stop; i++)
 	{
 		printf("%d%c", array[i], i != stop ? ',' : '\n');
