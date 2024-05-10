@@ -19,7 +19,7 @@
  */
 int advanced_binary(int *array, size_t size, int value)
 {
-	size_t min = 0, max = size - 1, mid = (max + min )/2;
+	size_t min = 0, max = size - 1, mid = (max + min) / 2;
 	int res;
 
 	if (!array)
@@ -31,14 +31,8 @@ int advanced_binary(int *array, size_t size, int value)
 			return (-1);
 		return (min);
 	}
-	if (size == 2)
-	{
-		if (array[min] == value)
-			return (min);
-		if (array[max] == value)
-			return (max);
-		return (-1);
-	}
+	if (size == 2 && array[min] == value)
+		return (min);
 	size /= 2;
 	if (array[mid] == value)
 		size++, max = mid;
