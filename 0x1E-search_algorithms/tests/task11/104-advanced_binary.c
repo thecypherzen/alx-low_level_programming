@@ -39,7 +39,7 @@ int advanced_binary(int *array, size_t size, int value)
 	else if (array[mid] < value)
 		min = mid + 1;
 	else
-		max = mid - 1;
+		max = mid;
 	res = advanced_binary(array + min, size, value);
 	return (res < 0 ? res : (int)min + res);
 }
