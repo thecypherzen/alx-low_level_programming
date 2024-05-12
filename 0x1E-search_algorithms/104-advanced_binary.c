@@ -34,12 +34,14 @@ int advanced_binary(int *array, size_t size, int value)
 	if (size == 2 && array[min] == value)
 		return (min);
 	size /= 2;
-	if (array[mid] == value)
-		size++, max = mid;
-	else if (array[mid] < value)
+	if (array[mid] < value)
 		min = mid + 1;
 	else
+	{
+		if (array[mid] >= value)
+			size++;
 		max = mid;
+	}
 	res = advanced_binary(array + min, size, value);
 	return (res < 0 ? res : (int)min + res);
 }
