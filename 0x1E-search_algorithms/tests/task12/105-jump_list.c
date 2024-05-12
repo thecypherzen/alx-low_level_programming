@@ -19,7 +19,7 @@
  **/
 listint_t *jump_list(listint_t *list, size_t size, int value)
 {
-	size_t jmp_sz, max = size - 1, right_idx, i;
+	size_t jmp_sz, right_idx;
 	listint_t *left = NULL, *right = NULL;
 
 	if (!list)
@@ -27,20 +27,22 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 	jmp_sz = sqrt((double)size);
 	left = right = list, right_idx = jmp_sz;
 
-	printf("left: %lu[%d] | jmp_sz: %lu | right_dx: %lu | max: %lu\n",
-	       left->index, left->n, jmp_sz, right_idx, max);
-	while (right_idx <= max)
+	if (left->n == value)
+		return (left);
+	while (1)
 	{
-		for (i = 0; i < right_idx; i++)
+	       /*printf("  left: %lu[%d] | jmp_sz: %lu | right_dx: %lu\n",*/
+	       /* left->index, left->n, jmp_sz, right_idx);*/
+	       while (right->next && right->index < right_idx)
 			right = right->next;
-		printf("Value checked at index [%lu] = [%d]\n",
-		       left->index, left->n);
-		if (value <= right->n)
-			break;
-		left = right, right_idx += jmp_sz;
+       	       printf("Value checked at index [%lu] = [%d]\n",
+		      right->index, right->n);
+	       if (!right->next || right->n >= value)
+		       break;
+	       left = right, right_idx += jmp_sz;
 	}
 	printf("Value found between indexes [%lu] and [%lu]\n",
-	       left->index, right_idx);
+	       left->index, right->index);
 	while(left)
 	{
 		printf("Value checked at index [%lu] = [%d]\n",
@@ -49,5 +51,5 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 			return (left);
 		left = left->next;
 	}
-	return (NULL);
+	return (left);
 }
