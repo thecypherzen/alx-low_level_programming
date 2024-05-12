@@ -14,7 +14,7 @@
  * - Every time you compare a value in the list to the value you are searching,
  *   + you have to print this value
  *
- * Return: -1 if @list is NULL or @value not found.
+ * Return: NULL if @list is NULL or @value not found.
  *         pointer to node containing @value otherwise.
  **/
 listint_t *jump_list(listint_t *list, size_t size, int value)
