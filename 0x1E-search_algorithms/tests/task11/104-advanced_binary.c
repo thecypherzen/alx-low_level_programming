@@ -25,7 +25,7 @@ int advanced_binary(int *array, size_t size, int value)
 	if (!array)
 		return (-1);
 	/*printf("%lu%lu%lu: ", min, mid, max); */
-	print_subarray(array + min, min, max);
+	print_subarray(array, min, max);
 	if (min == max)
 	{
 		if (array[min] != value)
