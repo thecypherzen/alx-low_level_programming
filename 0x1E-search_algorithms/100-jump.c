@@ -55,25 +55,3 @@ int jump_search(int *array, size_t size, int value)
 	}
 	return (-1);
 }
-
-
-
-
-/**
- * binary_print - prints binary search sub-arrays
- *
- * @array: pointer to first element in array
- * @start: starting index in array to print
- * @stop: stopping indes in array to print
- */
-void binary_print(int *array, int start, int stop)
-{
-	int i;
-
-	printf("Searching in array: ");
-	for (i = start; i <= stop; i++)
-	{
-		printf("%d%s", array[i],
-		       i >= stop ? "\n" : ", ");
-	}
-}
