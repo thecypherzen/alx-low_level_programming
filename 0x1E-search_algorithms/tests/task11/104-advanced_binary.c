@@ -23,6 +23,8 @@ int advanced_binary(int *array, size_t size, int value)
 {
 	int index = 0;
 
+	if (!array || !size)
+		return (-1);
 	recursive_binary(array, size, value, &index);
 	return (index);
 }
@@ -42,9 +44,7 @@ void recursive_binary(int *array, size_t size, int value, int *index)
 {
 	int left = 0, right = size - 1, mid;
 
-	/* validate pointer */
-	if (!array || !size)
-		return;
+
 	mid = (left + right) / 2;
 	if (mid > (int)(size - 1))
 		return;
