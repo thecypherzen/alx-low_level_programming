@@ -64,13 +64,12 @@ void recursive_binary(int *array, size_t size, int value, int *index)
 			if (size == 2)
 				return;
 			right = mid;
-			size = (size_t)(right - left + 1);
 		}
 		else
 			left = mid + 1, *index += left;
 	}
 	else
-		right = mid - 1;
+		right = mid;
 	size = (size_t)(right - left + 1);
 	recursive_binary(array + left, size, value, index);
 }
